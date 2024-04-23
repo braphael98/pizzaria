@@ -1,5 +1,6 @@
 <?php
-class ItemDoPedido_class{
+class ItemDoPedido_class
+{
     private $valor;
     private $descricao;
 
@@ -20,4 +21,5 @@ class ItemDoPedido_class{
     {
         return $this->descricao;
     }
+  
 }
