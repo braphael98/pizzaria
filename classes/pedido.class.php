@@ -1,7 +1,7 @@
 <?php
 require_once 'cliente.class.php';
 require_once 'itemDoPedido.class.php';
-require_once 'pizza.class.php';
+
 
 class Pedido_class
 {
@@ -11,8 +11,9 @@ class Pedido_class
     private $taxaDeEntrega;
     
     public function addItemDoPedido($itemDoPedido)
-    {
+    {   
         $this->itemDoPedido[] = $itemDoPedido;
+        $this->addTotal($itemDoPedido->calcularPreco());     
     }
     
     public function getItemDoPedido()
@@ -34,12 +35,14 @@ class Pedido_class
     {
         $this->total = $total;
     }
-    
+    public function addTotal($valor){
+        $this->total += $valor;
+    }
     public function getTotal()
     {
         return $this->total;
     }
-    
+
     public function setTaxaDeEntrega($taxaDeEntrega)
     {
         $this->taxaDeEntrega = $taxaDeEntrega;
@@ -50,15 +53,16 @@ class Pedido_class
         return $this->taxaDeEntrega;
     }
 
+
     public function imprimir()
     {
         echo "Total: " . $this->getTotal() . "<br>";
         echo "Taxa de Entrega: " . $this->getTaxaDeEntrega() . "<br>";
         echo "Cliente: " . $this->getCliente()->getNome() . "<br>";
         
-        foreach ($this->itemDoPedido as $item) {
-            echo "Valor: " . $item->getValor() . "<br>";
-            echo "Item: " . $item->getDescricao() . "<br>";
+        foreach ($this->itemDoPedido as $itemDoPedido) {
+            echo "Valor: " . $itemDoPedido->getValor() . "<br>";
+            echo "Item: " . $itemDoPedido->getDescricao() . "<br>";
         }
     }
 }

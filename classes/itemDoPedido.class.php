@@ -2,6 +2,8 @@
 class ItemDoPedido_class
 {
     private $valor;
+
+    private $itens = [];
     private $descricao;
 
     public function setValor($valor)
@@ -23,3 +25,11 @@ class ItemDoPedido_class
     }
   
 }
+
+
+
+
+
+//$retorno = implode(",", $this->itens);
+        
+//return $retorno;

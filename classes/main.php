@@ -15,21 +15,24 @@ $pedido = new Pedido_class();
 $pedido->setCliente($cliente);
 
 // Criação de uma pizza como item do pedido
-$pizza = new Pizza_class();
-$pizza->setTamanho('Grande');
-$pizza->setSabor('Calabresa');
-$pizza->setBorda('Catupiry');
+$count = 0;
+do{
+    $pizza = new Pizza_class();
+    $pizza->setTamanho("Grande");
+    $pizza->setSabor("Calabresa");
+    $pizza->setBorda("Catupiry");
+    
+    $pizza->setDescricao("Pizza de Calabresa Grande com Borda de Catupiry");
+    
+    $pedido->addItemDoPedido($pizza);
 
-// Criação de um objeto ItemDoPedido_class para a pizza
-$itemDoPedido = new ItemDoPedido_class();
-$itemDoPedido->setDescricao("Pizza de Calabresa Grande com Borda de Catupiry");
-$itemDoPedido->setValor($pizza->calcularPreco()); // Supondo que exista um método calcularPreco() na classe Pizza_class
+    $count++;
+}while($count <= 5);
 
-// Adicionando o item do pedido ao pedido
-$pedido->addItemDoPedido($itemDoPedido);
+
 
 // Definição dos valores dos atributos do pedido
-$pedido->setTotal($itemDoPedido->getValor() + $pedido->getTaxaDeEntrega()); // Supondo que a taxa de entrega seja adicionada ao total
+$pedido->setTotal($pizza->getValor() + $pedido->getTaxaDeEntrega()); // Supondo que a taxa de entrega seja adicionada ao total
 
 // Chamada da função imprimir para exibir os atributos do pedido e do cliente
 $pedido->imprimir();
