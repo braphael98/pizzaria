@@ -2,16 +2,20 @@
 class ItemDoPedido_class
 {
     private $valor;
+
+    private $itens = [];
     private $descricao;
 
     public function setValor($valor)
     {
         $this->valor = $valor;
     }
+
     public function getValor()
     {
         return $this->valor;
     }
+
     public function setDescricao($descricao)
     {
         $this->descricao = $descricao;
@@ -21,5 +25,4 @@ class ItemDoPedido_class
     {
         return $this->descricao;
     }
-  
 }
