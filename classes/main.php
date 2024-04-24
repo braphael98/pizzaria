@@ -7,38 +7,35 @@ require_once 'batatinha.class.php';
 require_once 'cerveja.class.php';
 require_once 'refrigerante.class.php';
 
+// Cria o endereço do cliente
+$endereco = new Endereco_class();
+$endereco->setRua("Rua A");
+$endereco->setBairro("Centro");
+$endereco->setCidade("Erechim");
+
+// Cria o cliente e defina o endereço
 $cliente = new Cliente_class();
 $cliente->setNome("João");
+$cliente->setEndereco($endereco);
 
+// Cria o pedido e defina o cliente
 $pedido = new Pedido_class();
-
 $pedido->setCliente($cliente);
 
-$count = 0;
-do{
-    $pizza = new Pizza_class();
-    $batatinha = new Batatinha_class();
+// Calcula a taxa de entrega
+$pedido->calcularTaxaDeEntrega();
 
-    $pizza->setTamanho("Grande");
-    $pizza->setSabor("Calabresa");
-    $pizza->setBorda("Catupiry");
+// Adiciona itens ao pedido
+$pizza = new Pizza_class();
+$pizza->setTamanho("Grande");
+$pizza->setSabor("Calabresa");
+$pizza->setBorda("Catupiry");
+$pizza->setDescricao("Pizza: " . $pizza->getTamanho() . " " . $pizza->getSabor() . " " . $pizza->getBorda());
+$pedido->addItemDoPedidoPizza($pizza);
 
-    $batatinha->setTamanho("Pequena");
-    $batatinha->setSabor("Tradicional");
-    
-    
-    
-    $pizza->setDescricao("Pizza: ". $pizza->getTamanho()." ".$pizza->getSabor()." ".$pizza->getBorda());
-    $batatinha->setDescricao("Batata: ".$batatinha->getTamanho()." " .$batatinha->getSabor());
-    
-    $pedido->addItemDoPedidoPizza($pizza);
-    $pedido->addItemDoPedidoBatata($batatinha);
-    
-    $count++;
-}while($count <= 4);
+// Calcula o total do pedido
+$pedido->calcularTotal();
 
-
-//$pedido->setTotal($pizza->getValor() + $pedido->getTaxaDeEntrega()); // Supondo que a taxa de entrega seja adicionada ao total
-
+// Imprime o pedido
 $pedido->imprimir();
 ?>

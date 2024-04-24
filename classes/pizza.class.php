@@ -1,4 +1,5 @@
 <?php
+require_once 'itemDoPedido.class.php';
 class Pizza_class extends ItemDoPedido_class
 {
     private $tamanho;

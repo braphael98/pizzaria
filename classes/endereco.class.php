@@ -1,5 +1,5 @@
 <?php
-class Endereco_class
+class Endereco_class 
 {
     private $rua;
     private $bairro;
@@ -17,7 +17,7 @@ class Endereco_class
     {
         $this->bairro = $bairro;
     }
-    public function getBairro($bairro)
+    public function getBairro()
     {
         return $this->bairro;
     }
@@ -30,4 +30,3 @@ class Endereco_class
         return $this->cidade;
     }
 }
-?>

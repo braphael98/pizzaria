@@ -1,10 +1,7 @@
 <?php
-require_once 'cliente.class.php';
-require_once 'itemDoPedido.class.php';
-
 class Pedido_class
 {
-    private Cliente_class $cliente;
+  private Cliente_class $cliente;
     private array $itemDoPedido = [];
     private $total;
     private $taxaDeEntrega;
@@ -20,6 +17,17 @@ class Pedido_class
         $this->addTotal($itemDoPedido->calcularPrecoBatata());
     }
     
+    public function addItemDoPedidoRefri($itemDoPedido)
+    {
+        $this->itemDoPedido[] = $itemDoPedido;
+        $this->addTotal($itemDoPedido->calcularPrecoRefri());
+    }
+    public function addItemDoPedidoCerveja($itemDoPedido)
+    {
+        $this->itemDoPedido[] = $itemDoPedido;
+        $this->addTotal($itemDoPedido->calcularPrecoCerveja());
+    }
+   
     public function getItemDoPedido()
     {
         return $this->itemDoPedido;
@@ -50,16 +58,49 @@ class Pedido_class
     }
 
     public function setTaxaDeEntrega($taxaDeEntrega)
-    {
+    {  
         $this->taxaDeEntrega = $taxaDeEntrega;
     }
     
     public function getTaxaDeEntrega()
-    {
+    {   
         return $this->taxaDeEntrega;
     }
+    public function calcularTaxaDeEntrega()
+    {
+        $enderecoCliente = $this->cliente->getEndereco();
+        
+        $bairro = $enderecoCliente->getBairro();
+        switch ($bairro) {
+            case 'Centro':
+                $this->taxaDeEntrega = 8; 
+                break;
+            case 'Periferia':
+                $this->taxaDeEntrega = 9; 
+                break;
+            case 'Rural':
+                $this->taxaDeEntrega = 10; 
+                break;    
+            default:
+                $this->taxaDeEntrega = 15;
+                break;
+        }
+        
 
+    }
+    public function calcularTotal()
+    {
+        $this->total = 0;
 
+        // Calcular o total dos itens do pedido
+        foreach ($this->itemDoPedido as $itemDoPedido) {
+            $this->total += $itemDoPedido->getValor();
+        }
+
+        // Adicionar a taxa de entrega ao total
+        $this->total += $this->taxaDeEntrega;
+    }
+    
     public function imprimir()
     {
         echo "Total: " . $this->getTotal() . "<br>";
@@ -72,5 +113,4 @@ class Pedido_class
             echo "R$" . $itemDoPedido->getValor() . "<br>";
         }
     }
-}
-?>
+ }

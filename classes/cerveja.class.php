@@ -1,14 +1,50 @@
 <?php
-class Cerveja_class extends ItemDoPedido_class{
+class Cerveja_class extends ItemDoPedido_class
+{
     private $tamanho;
     private $tipo;
 
-    public function setTamanho($tamanho){
+    public function setTamanho($tamanho)
+    {
         $this->tamanho = $tamanho;
     }
-    public function getTamanho(){
+    public function getTamanho()
+    {
         return $this->tamanho;
     }
 
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+    }
+
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    public function calcularPrecoCerveja() 
+    {
+        $precoBase = 0;
+        switch ($this->tamanho) {
+            case 'LongNeck':
+                $precoBase = 9;
+                break;
+            case 'Latao':
+                $precoBase = 8;
+                break;
+        }
+        $precoTipo = 0; 
+        switch ($this->tipo) {
+            case 'Heineken':
+                $precoTipo = 5;
+                break;
+            case 'Corona':
+                $precoTipo = 5;
+                break;
+        }
+        $precoTotal = $precoBase + $precoTipo;
+        $this->setValor($precoTotal); 
+        return $precoTotal;
+    }
 }
-?>
