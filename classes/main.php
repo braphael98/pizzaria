@@ -12,6 +12,7 @@ $pedido = new Pedido_class();
 
 $pedido->setCliente($cliente);
 
+<<<<<<< HEAD
 $count = 0;
 do{
     $pizza = new Pizza_class();
@@ -35,6 +36,27 @@ do{
     $count++;
 }while($count <= 10);
 
+=======
+// Criação de uma pizza como item do pedido
+$count = 0;
+do{
+    $pizza = new Pizza_class();
+    $pizza->setTamanho("Grande");
+    $pizza->setSabor("Calabresa");
+    $pizza->setBorda("Catupiry");
+    
+    $pizza->setDescricao("Pizza de Calabresa Grande com Borda de Catupiry");
+    
+    $pedido->addItemDoPedido($pizza);
+
+    $count++;
+}while($count <= 5);
+
+
+
+// Definição dos valores dos atributos do pedido
+$pedido->setTotal($pizza->getValor() + $pedido->getTaxaDeEntrega()); // Supondo que a taxa de entrega seja adicionada ao total
+>>>>>>> 970d3a5b7e3fa1bb2bea32496412260c879e3053
 
 //$pedido->setTotal($pizza->getValor() + $pedido->getTaxaDeEntrega()); // Supondo que a taxa de entrega seja adicionada ao total
 
