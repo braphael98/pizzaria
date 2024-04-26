@@ -13,5 +13,8 @@ class Faturamento_class
     {
         return $this->pedido;
     }
+    public function historico($npedido){
+      
+    }
 }
 ?>

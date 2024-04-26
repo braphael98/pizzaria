@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Pizzaria</h1>
+    <p>Digite seu pedido</p>
+    <form action="main.php" method="post">
+        <label for="nome">Digite seu nome</label>
+        <br>
+        <input type="text" name="nome" id="nome">
+        <br>
+        <label for="rua">Rua</label>
+        <input type="text" name="rua" id="rua">
+        <br>
+        <label for="Bairro">Bairro</label>
+        <input type="text" name="bairro" id="bairro">
+        <br>
+        <br>
+        <input type="checkbox" value="true" name = "itensDoPedido[pizza]">
+        <label for="pizza">Pizza:</label>
+        <select name="pizza" id="pizza">
+            <option value="calabresa">Calabresa</option>
+            <option value="quatroqueijos">Quatro-Queijos</option>
+            <option value="strogonoff">Strogonoff</option>   
+        </select>
+        <br>
+        <input type="radio" id="grande" name="tamanho" value="grande">
+        <label for="grande">Grande</label><br>
+        <input type="radio" id="Medio" name="tamanho" value="medio">
+        <label for="">Medio</label><br>
+        <input type="radio" id="pequena" name="tamanho" value="pequena">
+        <label for="pequena">Pequena</label>
+        <br>
+        <label for="borda">Borda</label>
+        <br>
+        <select name="borda" id="borda">
+            <option value="catupiry">Catupiry</option>
+            <option value="cheddar">Cheddar</option>
+            <option value="semborda">Sem Borda</option>
+        </select>
+        <br>
+        <br>
+        <input type="checkbox" value="true" name = "itensDoPedido[batata]">
+        <label for="batata">Batata</label>
+        <select name="batata" id="batata">
+            <option value="bacon">Bacon</option>
+            <option value="quatroqueijos">Quatro-Queijos</option>
+            <option value="tradicional">Tradicional</option>
+        </select>
+        <br>
+        <input type="radio" id="grande" name="tamanhoBatata" value="grande">
+        <label for="grande">Grande</label><br>
+        <input type="radio" id="Medio" name="tamanhoBatata" value="medio">
+        <label for="">Medio</label><br>
+        <input type="radio" id="pequena" name="tamanhoBatata" value="pequena">
+        <label for="pequena">Pequena</label>
+        <br>
+        <br>
+        <p>Bebidas</p>
+        <input type="checkbox" value="true" name = "itensDoPedido[cerveja]">
+        <label for="cerveja">Cerveja</label>
+        <select name="marca" id="marca">Marca
+            <option value="corona">Corona</option>
+            <option value="heineken">Heineken</option>
+        </select>
+        <br>
+        <input type="radio" id="longneck" name="tamanhoCerveja" value="longneck">
+        <label for="longneck">Longneck</label>
+        <input type="radio" id="latao" name="tamanhoCerveja" value="latao">
+        <label for="">Latão</label><br>
+        <br>
+        <label for="refrigerante">refrigerante</label>
+        <input type="radio" id="lata" name="tamanhoRefri" value="lata">
+        <label for="lata">Lata</label>
+        <input type="radio" id="600" name="tamanhoRefri" value="600">
+        <label for="lata">600</label>
+        <input type="radio" id="2litros" name="tamanhoRefri" value="2L">
+        <label for="lata">2 Litros</label>
+        
+
+
+        
+        
+
+
+            
+        <input type="submit" value="Enviar">
+
+            
+
+    
+
+
+    </form>
+</body>
+
+</html>

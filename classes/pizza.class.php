@@ -40,42 +40,44 @@ class Pizza_class extends ItemDoPedido_class
     {
         $precoBase = 0;
         switch ($this->tamanho) {
-            case 'Pequena':
+            case 'pequena':
                 $precoBase = 20;
                 break;
-            case 'Média':
+            case 'media':
                 $precoBase = 25;
                 break;
-            case 'Grande':
+            case 'grande':
                 $precoBase = 30;
-                break;
+                break; 
             default:
             $precoBase = 0;    
         }
     
         $precoSabor = 0;
         switch ($this->sabor) {
-            case 'Calabresa':
+            case 'calabresa':
                 $precoSabor = 5;
                 break;
-            case 'Quatro Queijos':
+            case 'quatroqueijos':
                 $precoSabor = 5;
                 break;
-            case 'Strogonoff':
-                $precoSabor = 10;
+            case 'strogonoff':
+                $precoSabor = 12;
                 break;
-            case 'Portuguesa':
+            case 'portuguesa':
                 $precoSabor = 11;
                 break;
         }
         $precoBorda = 0;
         switch ($this->borda) {
-            case 'Catupiry':
+            case 'catupiry':
                 $precoBorda = 5;
                 break;
-            case 'Cheddar':
+            case 'cheddar':
                 $precoBorda = 4;
                 break;
+            case 'semborda':
+                $precoBorda = 0;    
             default:
                 $precoBorda = 0;
         }

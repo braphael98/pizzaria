@@ -3,7 +3,6 @@ class Batatinha_class extends ItemDoPedido_class
 {
     private $tamanho;
     private $sabor;
-    private $tipo;
     public function setTamanho($tamanho)
     {
         $this->tamanho = $tamanho;
@@ -24,25 +23,25 @@ class Batatinha_class extends ItemDoPedido_class
     {
         $precoBase = 0;
         switch ($this->tamanho) {
-            case 'Pequena':
+            case 'pequena':
                 $precoBase = 10;
                 break;
-            case 'Média':
+            case 'media':
                 $precoBase = 15;
                 break;
-            case 'Grande':
+            case 'grande':
                 $precoBase = 25;
                 break;
         }
         $precoSabor = 0;
         switch ($this->sabor) {
-            case 'Bacon':
+            case 'bacon':
                 $precoSabor = 5;
                 break;
-            case 'Quatro Queijos':
+            case 'quatroqueijos':
                 $precoSabor = 5;
                 break;
-            case 'Tradicional':
+            case 'tadicional':
                 $precoSabor = 10;
                 break;
         }
