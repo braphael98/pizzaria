@@ -27,7 +27,7 @@ class Cerveja_class extends ItemDoPedido_class
     {
         $precoBase = 0;
         switch ($this->tamanho) {
-            case 'longNeck':
+            case 'longneck':
                 $precoBase = 9;
                 break;
             case 'latao':

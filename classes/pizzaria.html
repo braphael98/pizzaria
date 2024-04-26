@@ -9,9 +9,10 @@
 </head>
 
 <body>
-    <h1>Pizzaria</h1>
-    <p>Digite seu pedido</p>
+    <h1>&#127829<i>Pizzaria Donna Mercedes </i>&#127829</h1>
+
     <form action="main.php" method="post">
+        <p>Digite seu pedido</p>
         <label for="nome">Digite seu nome</label>
         <br>
         <input type="text" name="nome" id="nome">
@@ -74,7 +75,9 @@
         <input type="radio" id="longneck" name="tamanhoCerveja" value="longneck">
         <label for="longneck">Longneck</label>
         <input type="radio" id="latao" name="tamanhoCerveja" value="latao">
-        <label for="">Latão</label><br>
+        <label for="latao">Latão</label><br>
+        <br>
+        <input type="checkbox" value="true" name = "itensDoPedido[refrigerante]">
         <br>
         <label for="refrigerante">refrigerante</label>
         <input type="radio" id="lata" name="tamanhoRefri" value="lata">

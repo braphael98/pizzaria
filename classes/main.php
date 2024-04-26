@@ -10,6 +10,8 @@ require_once 'batatinha.class.php';
 require_once 'cerveja.class.php';
 require_once 'refrigerante.class.php';
 
+
+
 // Cria o endereço do cliente
 $endereco = new Endereco_class();
 $endereco->setRua($_POST['rua']);
@@ -54,17 +56,20 @@ if (isset($_POST["itensDoPedido"]["cerveja"])) {
     $cerveja->setTamanho($_POST["tamanhoCerveja"]);
     $cerveja->setTipo($_POST["marca"]);
     $cerveja->setDescricao("Cerveja: "." " . $cerveja->getTamanho() . " ". $cerveja->getTipo());
+    $pedido->addItemDoPedidoCerveja($cerveja);
 }
 if (isset($_POST["itensDoPedido"]["refrigerante"])){
     $refrigerante = new Refrigerante_class();
     $refrigerante->setTamanho($_POST["tamanhoRefri"]);
     $refrigerante->setTipo($_POST['marcaRefri']);
-    $refrigerante->setDescricao(''. ' '.
+    $refrigerante->setDescricao('Refrigerante:'." ".$refrigerante->getTamanho(). " ".$cerveja->getTipo());
+    $pedido->addItemDoPedidoRefri($refrigerante);
 }
 
 
 // Calcula o total do pedido
 $pedido->calcularTotal();
+
 
 // Imprime o pedido
 $pedido->imprimir();

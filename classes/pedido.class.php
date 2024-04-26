@@ -6,6 +6,11 @@ class Pedido_class
     private $total;
     private $taxaDeEntrega;
     
+    private $numeroDoPedido;
+
+
+    
+    
     public function addItemDoPedidoPizza($itemDoPedido)
     {   
         $this->itemDoPedido[] = $itemDoPedido;
@@ -100,9 +105,29 @@ class Pedido_class
         // Adicionar a taxa de entrega ao total
         $this->total += $this->taxaDeEntrega;
     }
+    public function getNumeroDoPedido() {
+        return $this->numeroDoPedido;
+    }
+    
+    public function setNumeroDoPedido($numeroDoPedido) {
+        $this->numeroDoPedido = $numeroDoPedido;
+    }
+    
     
     public function imprimir()
-    {
+    {   echo "<!DOCTYPE html>";
+        echo "<html lang='pt-br'>";
+        echo "<head>";
+        echo "<meta charset='UTF-8'>";
+        echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
+        echo "<title>Recibo do Pedido</title>";
+        echo "<link rel='stylesheet' href='style.css'>";
+        echo "</head>";
+        echo "<body>";
+        echo"<form>";
+        echo"<ul>";
+        echo "Numero do Pedido: " ." ". $this->getNumeroDoPedido();
+        echo"<h2>&#127829; Detalhes do Pedido &#127829;</h2>";
         echo "Total: " . $this->getTotal() . "<br>";
         echo "Taxa de Entrega: " . $this->getTaxaDeEntrega() . "<br>";
         echo "Cliente: " . $this->getCliente()->getNome() . "<br>";
@@ -111,6 +136,11 @@ class Pedido_class
         foreach ($this->itemDoPedido as $itemDoPedido) {
             echo $itemDoPedido->getDescricao() . " ";
             echo "R$" . $itemDoPedido->getValor() . "<br>";
+            
         }
+        echo"</ul>";
+        echo "</form>";
+        
     }
  }
+?>

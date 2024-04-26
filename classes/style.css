@@ -9,7 +9,8 @@
 
 body {
     background-color: #15142b;
-    background-image: linear-gradient(180deg, #c2d3c1, #306fce);
+    background: rgb(0,249,4);
+    background: linear-gradient(42deg, rgba(0,249,4,1) 0%, rgba(238,238,238,1) 37%, rgba(244,159,159,1) 66%, rgba(251,55,55,1) 82%, rgba(255,0,0,1) 89%);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -132,7 +133,7 @@ ul > li::marker {
 /* ELEMENTOS DE FORMULÁRIO */
 
 form {
-    background-color: rgba(55, 41, 145, 0.2);
+    background-color: rgba(238, 255, 0, 0.338);
     padding: 15px;
     border-radius: 10px;
 }
@@ -142,7 +143,7 @@ form label {
     width: fit-content;
     font-size: 0.8em;
     font-weight: 100;
-    background-color: rgba(215, 213, 226, 0.671);
+    background-color: rgba(173, 16, 16, 0.479);
     padding: 3px 7px;
     margin-top: 10px;
     margin-bottom: 0px;
