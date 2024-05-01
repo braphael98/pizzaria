@@ -1,6 +1,7 @@
 <?php
 class Pedido_class
 {
+   
   private Cliente_class $cliente;
     private array $itemDoPedido = [];
     private $total;
@@ -142,5 +143,6 @@ class Pedido_class
         echo "</form>";
         
     }
+
  }
 ?>

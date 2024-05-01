@@ -39,10 +39,12 @@ $pedido->calcularTaxaDeEntrega();
 if (isset($_POST["itensDoPedido"]['pizza'])) {
     $pizza = new Pizza_class();
     $pizza->setTamanho($_POST['tamanho']);
-    $pizza->setSabor($_POST['pizza']);
+    $pizza->setSabor($_POST['pizza_sabor']);
     $pizza->setBorda($_POST['borda']);
     $pizza->setDescricao("Pizza: " . $pizza->getTamanho() . " " . $pizza->getSabor() . " " . "Borda" . " " . $pizza->getBorda());
+    $pizza->setNomeItem("Pizza");
     $pedido->addItemDoPedidoPizza($pizza);
+    $pizza->inserirBanco();
 }
 if (isset($_POST["itensDoPedido"]["batata"])) {
     $batatinha = new Batatinha_class();

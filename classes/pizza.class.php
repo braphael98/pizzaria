@@ -1,5 +1,5 @@
 <?php
-require_once 'itemDoPedido.class.php';
+require_once'itemDoPedido.class.php';
 class Pizza_class extends ItemDoPedido_class
 {
     private $tamanho;
@@ -40,14 +40,14 @@ class Pizza_class extends ItemDoPedido_class
     {
         $precoBase = 0;
         switch ($this->tamanho) {
-            case 'pequena':
-                $precoBase = 20;
-                break;
-            case 'media':
-                $precoBase = 25;
-                break;
-            case 'grande':
+            case "pequena":
                 $precoBase = 30;
+                break;
+            case "media":
+                $precoBase = 40;
+                break;
+            case "grande":
+                $precoBase = 50;
                 break; 
             default:
             $precoBase = 0;    
