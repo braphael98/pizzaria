@@ -1,9 +1,10 @@
 <?php
+require_once 'conexao.class.php';
 require_once 'endereco.class.php';
 class Cliente_class extends Endereco_class
 {
     private $nome;
-    private $endereco; // Agora armazenamos uma instância da classe Endereco_class
+    private $endereco; 
 
     public function setNome($nome)
     {
@@ -21,4 +22,23 @@ class Cliente_class extends Endereco_class
     {
         return $this->endereco;
     }
+
+    public function inserirCliente()
+{
+    $database = new Conexao();
+    $db = $database->getConnection();
+    $sql = 'INSERT INTO nome (nome) VALUES (:rua, :endereco)';
+    try {
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':rua', $this->rua);
+        $stmt->bindParam(':bairro', $this->bairro);
+        $stmt->execute();
+
+        return true;
+    } catch (PDOException $e) {
+        echo 'Erro ao inserir endereço: ' . $e->getMessage();
+        return false;
+    }
+}
+    
 }

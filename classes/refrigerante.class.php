@@ -1,21 +1,26 @@
 <?php
-class Refrigerante_class extends ItemDoPedido_class {
+class Refrigerante_class extends ItemDoPedido_class
+{
     private $tamanho;
     private $tipo;
 
-    public function setTamanho($tamanho){
+    public function setTamanho($tamanho)
+    {
         $this->tamanho = $tamanho;
     }
 
-    public function getTamanho() {
+    public function getTamanho()
+    {
         return $this->tamanho;
     }
 
-    public function setTipo($tipo){
+    public function setTipo($tipo)
+    {
         $this->tipo = $tipo;
     }
 
-    public function getTipo() {
+    public function getTipo()
+    {
         return $this->tipo;
     }
 
@@ -29,20 +34,20 @@ class Refrigerante_class extends ItemDoPedido_class {
             case '600':
                 $precoBase = 8;
                 break;
-            case '2L':
+            case '2litros':
                 $precoBase = 12;
                 break;
         }
         $precoTipo = 0; // Corrected variable name
         switch ($this->tipo) {
-            case 'Limao':
+            case 'guarana':
                 $precoTipo = 5;
                 break;
-            case 'Coca':
+            case 'coca-cola':
                 $precoTipo = 5;
                 break;
-            case 'Guarana':
-                $precoTipo = 10;
+            case 'sprite':
+                $precoTipo = 5;
                 break;
         }
         $precoTotal = $precoBase + $precoTipo;
@@ -50,4 +55,3 @@ class Refrigerante_class extends ItemDoPedido_class {
         return $precoTotal;
     }
 }
-?>

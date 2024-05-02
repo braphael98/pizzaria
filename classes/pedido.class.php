@@ -143,6 +143,5 @@ class Pedido_class
         echo "</form>";
         
     }
-
  }
 ?>

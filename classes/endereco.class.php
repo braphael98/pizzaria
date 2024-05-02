@@ -1,9 +1,9 @@
 <?php
-class Endereco_class 
+class Endereco_class
 {
     private $rua;
     private $bairro;
-    private $cidade;
+
 
     public function setRua($rua)
     {
@@ -21,12 +21,21 @@ class Endereco_class
     {
         return $this->bairro;
     }
-    public function setCidade($cidade)
+    public function inserirEndereco()
     {
-        $this->cidade = $cidade;
-    }
-    public function getCidade()
-    {
-        return $this->cidade;
+        $database = new Conexao();
+        $db = $database->getConnection();
+        $sql = 'INSERT INTO endereco (rua, bairro) VALUES (:rua, :bairro)';
+        try {
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':rua', $this->rua);
+            $stmt->bindParam(':bairro', $this->bairro);
+            $stmt->execute();
+
+            return true;
+        } catch (PDOException $e) {
+            echo 'Erro ao inserir endereço: ' . $e->getMessage();
+            return false;
+        }
     }
 }

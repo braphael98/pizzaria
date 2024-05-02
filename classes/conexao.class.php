@@ -4,7 +4,7 @@ class Conexao{
     private $host = 'localhost';
     private $db_name = 'pizzaria';
     private $username = 'root';
-    private $password = '';
+    private $password = 'senha';
     private $conn;
 
     public function getConnection(){

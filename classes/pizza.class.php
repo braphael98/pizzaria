@@ -82,7 +82,7 @@ class Pizza_class extends ItemDoPedido_class
                 $precoBorda = 0;
         }
         $precoTotal = $precoBase + $precoSabor + $precoBorda;
-        $this->setValor($precoTotal); // Definindo o valor calculado como o valor do item do pedido
+        $this->setValor($precoTotal);
         return $precoTotal;
     }
 }

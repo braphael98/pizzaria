@@ -1,36 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="main.php" method="post">
-    <fieldset class="itemDoPedido">
-        <input type="hidden" name="pizza_quantidade" value="1">
-        <select name="pizza_sabor[]">
-            <option value="Calabresa">Calabresa</option>
-            <option value="Frango">Frango</option>
-            <option value="4 Queijos">4 Queijos</option>
-            <option value="Marguerita">Marguerita</option>
-        </select>
-        <select name="pizza_tamanho[]">
-            <option value="Broto">Broto</option>
-            <option value="Pequena">Pequena</option>
-            <option value="Média">Média</option>
-            <option value="Grande">Grande</option>
-        </select>
-        <select name="pizza_borda[]">
-            <option value="Cheddar">Cheddar</option>
-            <option value="Catupiri">Catupiri</option>
-            <option value="Chocolate Branco">Chocolate Branco</option>
-            <option value="Chocolate Preto">Chocolate Preto</option>
-        </select>
-
-        <button type="button" onclick="addItem(this)">+</button>
-    </fieldset>
-    <button type="submit">Cadastrar</button>
-</form>
-</body>
-</html>
+<fieldset class="itemDoPedido">
+    <input type="hidden" name="batata_sabor" value="1">
+    <select name="batata_sabor[]">
+        <option value="bacon">Bacon</option>
+        <option value="quatroqueijos">Quatro Queijos</option>
+        <option value="tradicional">Tradicional</option>
+    </select>
+    <select name="batata_tamanho[]">
+        <option value="Broto">Broto</option>
+        <option value="Pequena">Pequena</option>
+        <option value="Média">Média</option>
+        <option value="Grande">Grande</option>
+    </select>
+    <select name="pizza_borda[]">
+        <option value="Cheddar">Cheddar</option>
+        <option value="Catupiri">Catupiri</option>
+        <option value="Chocolate Branco">Chocolate Branco</option>
+        <option value="Chocolate Preto">Chocolate Preto</option>
+    </select>

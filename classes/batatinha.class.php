@@ -23,26 +23,26 @@ class Batatinha_class extends ItemDoPedido_class
     {
         $precoBase = 0;
         switch ($this->tamanho) {
-            case 'pequena':
-                $precoBase = 10;
+            case 'Pequena':
+                $precoBase = 20;
                 break;
-            case 'media':
-                $precoBase = 15;
+            case 'Media':
+                $precoBase = 30;
                 break;
-            case 'grande':
-                $precoBase = 25;
+            case 'Grande':
+                $precoBase = 50;
                 break;
         }
         $precoSabor = 0;
         switch ($this->sabor) {
             case 'bacon':
-                $precoSabor = 5;
+                $precoSabor = 10;
                 break;
             case 'quatroqueijos':
-                $precoSabor = 5;
+                $precoSabor = 15;
                 break;
             case 'tadicional':
-                $precoSabor = 10;
+                $precoSabor = 20;
                 break;
         }
         $precoTotal = $precoBase + $precoSabor;

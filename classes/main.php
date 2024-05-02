@@ -16,7 +16,7 @@ require_once 'refrigerante.class.php';
 $endereco = new Endereco_class();
 $endereco->setRua($_POST['rua']);
 $endereco->setBairro($_POST['bairro']);
-$endereco->setCidade("Erechim");
+//$endereco->setCidade("Erechim");
 
 // Cria o cliente e defina o endereço
 $cliente = new Cliente_class();
@@ -37,41 +37,45 @@ $pedido->calcularTaxaDeEntrega();
 
 //se chegado com o checkbox executa o comando
 if (isset($_POST["itensDoPedido"]['pizza'])) {
-    $pizza = new Pizza_class();
-    $pizza->setTamanho($_POST['tamanho']);
-    $pizza->setSabor($_POST['pizza_sabor']);
-    $pizza->setBorda($_POST['borda']);
-    $pizza->setDescricao("Pizza: " . $pizza->getTamanho() . " " . $pizza->getSabor() . " " . "Borda" . " " . $pizza->getBorda());
-    $pizza->setNomeItem("Pizza");
-    $pedido->addItemDoPedidoPizza($pizza);
-    $pizza->inserirBanco();
+    // Loop através dos sabores selecionados
+    foreach ($_POST['pizza_sabor'] as $key => $saborPizza) {
+        $pizza = new Pizza_class();
+        $pizza->setTamanho($_POST['pizza_tamanho'][$key]);
+        $pizza->setSabor($saborPizza);
+        $pizza->setBorda($_POST['pizza_borda'][$key]);
+
+        $descricao = "Pizza: " . $pizza->getTamanho() . " " . $saborPizza . " Borda " . $pizza->getBorda();
+        $pizza->setDescricao($descricao);
+        $pedido->addItemDoPedidoPizza($pizza);
+    }
 }
 if (isset($_POST["itensDoPedido"]["batata"])) {
-    $batatinha = new Batatinha_class();
-    $batatinha->setTamanho($_POST['tamanhoBatata']);
-    $batatinha->setSabor($_POST['batata']);
-    $batatinha->setDescricao("Batata" . " " . $batatinha->getTamanho() . " " . $batatinha->getSabor());
-    $pedido->addItemDoPedidoBatata($batatinha);
+    foreach ($_POST['batata_sabor'] as $key => $saborBatata) {
+        $batatinha = new Batatinha_class();
+        $batatinha->setSabor($saborBatata);
+        $batatinha->setTamanho($_POST['batata_tamanho'][$key]);
+        $batatinha->setDescricao("Batata" . " " . $batatinha->getTamanho() . " " . $saborBatata);
+        $pedido->addItemDoPedidoBatata($batatinha);
+    }
 }
 if (isset($_POST["itensDoPedido"]["cerveja"])) {
-    $cerveja = new Cerveja_class();
-    $cerveja->setTamanho($_POST["tamanhoCerveja"]);
-    $cerveja->setTipo($_POST["marca"]);
-    $cerveja->setDescricao("Cerveja: "." " . $cerveja->getTamanho() . " ". $cerveja->getTipo());
-    $pedido->addItemDoPedidoCerveja($cerveja);
+    foreach ($_POST['cerveja_tipo'] as $key => $cervejaTipo) {
+        $cerveja = new Cerveja_class();
+        $cerveja->setTipo($cervejaTipo);
+        $cerveja->setTamanho($_POST["cerveja_tamanho"][$key]);
+        $cerveja->setDescricao("Cerveja:" . $cervejaTipo . " " . $cerveja->getTamanho());
+        $pedido->addItemDoPedidoCerveja($cerveja);
+    }
 }
-if (isset($_POST["itensDoPedido"]["refrigerante"])){
-    $refrigerante = new Refrigerante_class();
-    $refrigerante->setTamanho($_POST["tamanhoRefri"]);
-    $refrigerante->setTipo($_POST['marcaRefri']);
-    $refrigerante->setDescricao('Refrigerante:'." ".$refrigerante->getTamanho(). " ".$cerveja->getTipo());
-    $pedido->addItemDoPedidoRefri($refrigerante);
+if (isset($_POST["itensDoPedido"]["refrigerante"])) {
+    foreach ($_POST['refrigerante_tipo'] as $key => $refrigeranteTipo) {
+        $refrigerante = new Refrigerante_class();
+        $refrigerante->setTipo($refrigeranteTipo);
+        $refrigerante->setTamanho($_POST["refri_tamanho"][$key]);
+        $refrigerante->setDescricao('Refrigerante: ' . $refrigeranteTipo . " " . $refrigerante->getTamanho());
+        $pedido->addItemDoPedidoRefri($refrigerante);
+    }
 }
-
-
-// Calcula o total do pedido
 $pedido->calcularTotal();
-
-
-// Imprime o pedido
+$endereco->inserirEndereco();
 $pedido->imprimir();

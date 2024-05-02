@@ -9,9 +9,11 @@
 </head>
 
 <body>
-    <h1>&#127829<i>Pizzaria Donna Mercedes </i>&#127829</h1>
+    <h1>&#127829<i>Pizzaria Quase Pronto</i>&#127829</h1>
+    <script src="js/app.js"></script>
 
-    <form action="main.php" method="post">
+    <form action="main.php" method="POST">
+
         <p>Digite seu pedido</p>
         <label for="nome">Digite seu nome</label>
         <br>
@@ -24,81 +26,92 @@
         <input type="text" name="bairro" id="bairro">
         <br>
         <br>
-        <input type="checkbox" value="true" name = "itensDoPedido[pizza]">
-        <label for="pizza">Pizza:</label>
-        <select name="pizza_sabor[]">
-            <option value="calabresa">Calabresa</option>
-            <option value="quatroqueijos">Quatro-Queijos</option>
-            <option value="strogonoff">Strogonoff</option>   
-        </select>
-        <br>
-        <input type="radio" id="grande" name="tamanho" value="grande">
-        <label for="grande">Grande</label><br>
-        <input type="radio" id="media" name="tamanho" value="media">
-        <label for="">Media</label><br>
-        <input type="radio" id="pequena" name="tamanho" value="pequena">
-        <label for="pequena">Pequena</label>
-        <br>
-        <label for="borda">Borda</label>
-        <br>
-        <select name="borda" id="borda">
-            <option value="catupiry">Catupiry</option>
-            <option value="cheddar">Cheddar</option>
-            <option value="semborda">Sem Borda</option>
-        </select>
-        <br>
-        <br>
-        <input type="checkbox" value="true" name = "itensDoPedido[batata]">
-        <label for="batata">Batata</label>
-        <select name="batata" id="batata">
-            <option value="bacon">Bacon</option>
-            <option value="quatroqueijos">Quatro-Queijos</option>
-            <option value="tradicional">Tradicional</option>
-        </select>
-        <br>
-        <input type="radio" id="grande" name="tamanhoBatata" value="grande">
-        <label for="grande">Grande</label><br>
-        <input type="radio" id="Medio" name="tamanhoBatata" value="medio">
-        <label for="">Medio</label><br>
-        <input type="radio" id="pequena" name="tamanhoBatata" value="pequena">
-        <label for="pequena">Pequena</label>
+        <fieldset class="itemDoPedido">
+            <input type="checkbox" value="true" name="itensDoPedido[pizza]">
+            <label for="pizza">Pizza:</label>
+            <select name="pizza_sabor[]">
+                <option value="calabresa">Calabresa</option>
+                <option value="quatroqueijos">Quatro-Queijos</option>
+                <option value="strogonoff">Strogonoff</option>
+            </select>
+            <br>
+            <select name="pizza_tamanho[]">
+                <option value="pequena">Pequena</option>
+                <option value="media">Média</option>
+                <option value="grande">Grande</option>
+            </select>
+            <select name="pizza_borda[]">
+                <option value="cheddar">Cheddar</option>
+                <option value="catupiry">catupiry</option>
+                <option value="semborda">Sem Borda</option>
+            </select>
+            <button type="button" onclick="addItem(this)">+</button>
+        </fieldset>
         <br>
         <br>
-        <p>Bebidas</p>
-        <input type="checkbox" value="true" name = "itensDoPedido[cerveja]">
+        <fieldset class="itemDoPedido">
+            <input type="checkbox" value="true" name="itensDoPedido[batata]">
+
+            <label for="batata">Batata</label>
+            <input type="hidden" name="batata_sabor" value="1">
+            <select name="batata_sabor[]">
+                <option value="bacon">Bacon</option>
+                <option value="quatroqueijos">Quatro Queijos</option>
+                <option value="tradicional">Tradicional</option>
+            </select>
+            <select name="batata_tamanho[]">
+                <option value="Pequena">Pequena</option>
+                <option value="Media">Média</option>
+                <option value="Grande">Grande</option>
+
+            </select>
+            <button type="button" onclick="addItem(this)">+</button>
+        </fieldset>
+        <br>
+       <h3>Bebidas</h3>
+       <fieldset class="itemDoPedido">
+        
+        <input type="checkbox" value="true" name="itensDoPedido[cerveja]">
         <label for="cerveja">Cerveja</label>
-        <select name="marca" id="marca">Marca
+        <select name="cerveja_tipo[]">
             <option value="corona">Corona</option>
             <option value="heineken">Heineken</option>
         </select>
+        <select name="cerveja_tamanho[]">
+            <option value="Longneck">Long Neck</option>
+            <option value="Latao">Latao</option>
+        </select>
+        <button type="button" onclick="addItem(this)">+</button>
+    </fieldset>
         <br>
-        <input type="radio" id="longneck" name="tamanhoCerveja" value="longneck">
-        <label for="longneck">Longneck</label>
-        <input type="radio" id="latao" name="tamanhoCerveja" value="latao">
-        <label for="latao">Latão</label><br>
+    <fieldset class="itemDoPedido">
+        <input type="checkbox" value="true" name="itensDoPedido[refrigerante]">
         <br>
-        <input type="checkbox" value="true" name = "itensDoPedido[refrigerante]">
-        <br>
-        <label for="refrigerante">refrigerante</label>
-        <input type="radio" id="lata" name="tamanhoRefri" value="lata">
-        <label for="lata">Lata</label>
-        <input type="radio" id="600" name="tamanhoRefri" value="600">
-        <label for="lata">600</label>
-        <input type="radio" id="2litros" name="tamanhoRefri" value="2L">
-        <label for="lata">2 Litros</label>
-        
+    <label for="refrigerante">Refrigerante</label>
+        <select name="refrigerante_tipo[]">
+            <option value="coca-cola">Coca-cola</option>
+            <option value="sprite">sprite</option>
+            <option value="guarana">guarana</option>
+        </select>
+        <select name="refri_tamanho[]">
+        <option value="lata">Lata</option>
+        <option value="600">600ml</option>
+        <option value="2litros">2litros</option>
+        </select>
+        <button type="button" onclick="addItem(this)">+</button>
+    </fieldset>
 
 
-        
-        
 
 
-            
+
+
+
         <input type="submit" value="Enviar">
 
-            
 
-    
+
+
 
 
     </form>
