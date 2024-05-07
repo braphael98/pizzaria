@@ -77,5 +77,5 @@ if (isset($_POST["itensDoPedido"]["refrigerante"])) {
     }
 }
 $pedido->calcularTotal();
-$endereco->inserirEndereco();
+//$endereco->inserirEndereco();
 $pedido->imprimir();

@@ -21,7 +21,7 @@ class Endereco_class
     {
         return $this->bairro;
     }
-    public function inserirEndereco()
+   /* public function inserirEndereco()
     {
         $database = new Conexao();
         $db = $database->getConnection();
@@ -37,5 +37,5 @@ class Endereco_class
             echo 'Erro ao inserir endereço: ' . $e->getMessage();
             return false;
         }
-    }
+    } */
 }
